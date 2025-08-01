@@ -1,14 +1,13 @@
 FROM n8nio/n8n
 
-# Set default port to 10000
+# Set default port Render expects (80 or 10000 works if configured)
 ENV N8N_PORT=10000
-ENV WEBHOOK_TUNNEL_URL=https://convertwiz-seo-agent.onrender.com
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=convertwizadmin
-ENV N8N_BASIC_AUTH_PASSWORD=AliAgent@SEO25
 
-# Make sure Render can detect the port
+# Set base URL for webhook and OAuth
+ENV WEBHOOK_TUNNEL_URL=https://convertwiz-seo-agent.onrender.com
+
+# Expose port for Render
 EXPOSE 10000
 
-# Use this command to start n8n correctly
+# Start n8n
 CMD ["n8n", "start"]
